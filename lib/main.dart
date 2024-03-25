@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import 'package:photos/screens/photos_list_screen.dart';
+import 'package:photos/screens/photos_list/photos_list_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
           cardTheme: const CardTheme().copyWith(
               color: kColorScheme.secondaryContainer,
               margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8)),
-          textTheme: GoogleFonts.latoTextTheme().copyWith(
+          textTheme: GoogleFonts.montserratTextTheme().copyWith(
               titleLarge: TextStyle(
                   fontWeight: FontWeight.bold,
                   color: kColorScheme.onSecondaryContainer,

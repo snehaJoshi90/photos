@@ -5,6 +5,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:photos/screens/photos_list/bloc/photos_list_cubit.dart';
 import 'package:photos/screens/photos_list/bloc/photos_list_state.dart';
 
+import 'package:photos/screens/photos_list/photos_details_screen.dart';
+
 class PhotosListScreen extends StatefulWidget {
   const PhotosListScreen({super.key});
 
@@ -63,7 +65,15 @@ class _PhotosListScreenState extends State<PhotosListScreen> {
                       itemBuilder: (context, index) {
                         return InkWell(
                           onTap: (){
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => PhotosDetailsScreen(
+                                photosListResponse : state.photosListResponse![index]),
 
+                                  //  phoListResponse: state.userListResponse![index]),
+                              )
+                            );
                           },
                           child: Card(
                             color: Theme.of(context).colorScheme.primaryContainer,

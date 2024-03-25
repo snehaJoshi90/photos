@@ -4,7 +4,7 @@ enum PhotosListResponseStatus { initial, loading, photosListSuccess, failure }
 
 class PhotoListState {
   PhotosListResponseStatus photosListResponseStatus;
-  PhotosListResponse? photosListResponse;
+  List<PhotosListResponse>? photosListResponse;
   String? message;
 
   PhotoListState(
@@ -14,7 +14,7 @@ class PhotoListState {
 
   PhotoListState copyWith({
     required PhotosListResponseStatus photosListResponseStatus,
-    PhotosListResponse? photosListResponse,
+    List<PhotosListResponse>? photosListResponse,
     String? message,
   }) {
     return PhotoListState(

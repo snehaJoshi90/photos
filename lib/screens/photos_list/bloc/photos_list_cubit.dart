@@ -19,7 +19,9 @@ class PhotosListCubit extends Cubit<PhotoListState> {
         await dio.get('https://jsonplaceholder.typicode.com/albums/1/photos');
 
     if (response.statusCode == 200) {
-      final photosList = PhotosListResponse.fromJson(response.data);
+      final photosList = (response.data as List<dynamic>)
+          .map((item) => PhotosListResponse.fromJson(item))
+          .toList();
 
       emit(state.copyWith(
           photosListResponseStatus: PhotosListResponseStatus.photosListSuccess,

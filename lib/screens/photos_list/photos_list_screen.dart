@@ -1,5 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:photos/main.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import 'package:photos/screens/photos_list/bloc/photos_list_cubit.dart';
+import 'package:photos/screens/photos_list/bloc/photos_list_state.dart';
 
 class PhotosListScreen extends StatefulWidget {
   const PhotosListScreen({super.key});
@@ -27,38 +31,70 @@ class _PhotosListScreenState extends State<PhotosListScreen> {
   ];
 
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    BlocProvider.of<PhotosListCubit>(context).fetchPhotosList();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
           title: const Text('Photos list'),
         ),
-        body: Column(
-          children: [
-            const SizedBox(
-              height: 30,
-            ),
-            ListView.separated(
-                shrinkWrap: true,
-                itemBuilder: (context, index) {
-                  return Card(
-                    color: Theme.of(context).colorScheme.primaryContainer,
-                    child: ListTile(
-                      leading: Text(
-                        _photosList[index]['id'],
-                        style: Theme.of(context).textTheme.titleLarge,
-                      ),
-                      title: Text(_photosList[index]['title']),
-                    ),
-                  );
-                },
-                separatorBuilder: (context, index) {
-                  return const SizedBox(
-                    height: 10,
-                  );
-                },
-                itemCount: _photosList.length),
-          ],
-        )
+        body: BlocBuilder<PhotosListCubit, PhotoListState>(
+            builder: (context, state) {
+          if (state.photosListResponseStatus ==
+              PhotosListResponseStatus.loading) {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          } else if (state.photosListResponseStatus ==
+              PhotosListResponseStatus.photosListSuccess) {
+            return SingleChildScrollView(
+              child: Column(
+                children: [
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  ListView.separated(
+                      shrinkWrap: true,
+                      itemBuilder: (context, index) {
+                        return InkWell(
+                          onTap: (){
+
+                          },
+                          child: Card(
+                            color: Theme.of(context).colorScheme.primaryContainer,
+                            child: ListTile(
+                                leading: Text(
+                                  state.photosListResponse![index].id.toString(),
+                                 // _photosList[index]['id'],
+                                  style: Theme.of(context).textTheme.titleLarge,
+                                ),
+                                title: Text(
+                                    state.photosListResponse![index].title ?? '')
+                                //Text(_photosList[index]['title']),
+                                ),
+                          ),
+                        );
+                      },
+                      separatorBuilder: (context, index) {
+                        return const SizedBox(
+                          height: 10,
+                        );
+                      },
+                      itemCount:state.photosListResponse?.length ?? 0,),
+                ],
+              ),
+            );
+          } else {
+            return Center(
+              child: Text('Failed to load list: ${state.message}'),
+            );
+          }
+        })
         //Text('Test',style: Theme.of(context).textTheme.titleLarge,)
 
         );

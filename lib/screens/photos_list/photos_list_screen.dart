@@ -76,7 +76,7 @@ class _PhotosListScreenState extends State<PhotosListScreen> {
                             );
                           },
                           child: Card(
-                            color: Theme.of(context).colorScheme.primaryContainer,
+                            //color: Theme.of(context).colorScheme.primaryContainer,
                             child: ListTile(
                                 leading: Text(
                                   state.photosListResponse![index].id.toString(),
@@ -110,3 +110,6 @@ class _PhotosListScreenState extends State<PhotosListScreen> {
         );
   }
 }
+
+// margin: EdgeInsets.symmetric(horizontal: Theme.of(context).cardTheme.margin!.horizontal,),
+// color: Theme.of(context).colorScheme.error.withOpacity(0.75),

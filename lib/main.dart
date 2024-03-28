@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:photos/screens/photos_list/bloc/photos_list_cubit.dart';
 
 import 'package:photos/screens/photos_list/photos_list_screen.dart';
+import 'package:photos/screens/bottom_navigation_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -34,9 +35,12 @@ class MyApp extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                     color: kColorScheme.onSecondaryContainer,
                     fontSize: 18))),
-        home: BlocProvider(
-          create: (context) => PhotosListCubit(),
-          child: const PhotosListScreen(),
-        ));
+        home:const BottomNavigationScreen()
+
+        // BlocProvider(
+        //   create: (context) => PhotosListCubit(),
+        //   child: const PhotosListScreen(),
+        // )
+    );
   }
 }

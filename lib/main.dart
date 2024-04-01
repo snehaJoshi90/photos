@@ -35,12 +35,6 @@ class MyApp extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                     color: kColorScheme.onSecondaryContainer,
                     fontSize: 18))),
-        home:const BottomNavigationScreen()
-
-        // BlocProvider(
-        //   create: (context) => PhotosListCubit(),
-        //   child: const PhotosListScreen(),
-        // )
-    );
+        home: const BottomNavigationScreen());
   }
 }

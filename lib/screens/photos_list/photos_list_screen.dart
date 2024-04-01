@@ -61,41 +61,40 @@ class _PhotosListScreenState extends State<PhotosListScreen> {
                     height: 20,
                   ),
                   ListView.separated(
-                      shrinkWrap: true,
-                      itemBuilder: (context, index) {
-                        return InkWell(
-                          onTap: (){
-                            Navigator.push(
+                    shrinkWrap: true,
+                    itemBuilder: (context, index) {
+                      return InkWell(
+                        onTap: () {
+                          Navigator.push(
                               context,
                               MaterialPageRoute(
                                 builder: (context) => PhotosDetailsScreen(
-                                photosListResponse : state.photosListResponse![index]),
-
-                                  //  phoListResponse: state.userListResponse![index]),
-                              )
-                            );
-                          },
-                          child: Card(
-                            //color: Theme.of(context).colorScheme.primaryContainer,
-                            child: ListTile(
-                                leading: Text(
-                                  state.photosListResponse![index].id.toString(),
-                                 // _photosList[index]['id'],
-                                  style: Theme.of(context).textTheme.titleLarge,
-                                ),
-                                title: Text(
-                                    state.photosListResponse![index].title ?? '')
-                                //Text(_photosList[index]['title']),
-                                ),
-                          ),
-                        );
-                      },
-                      separatorBuilder: (context, index) {
-                        return const SizedBox(
-                          height: 10,
-                        );
-                      },
-                      itemCount:state.photosListResponse?.length ?? 0,),
+                                    photosListResponse:
+                                        state.photosListResponse![index]),
+                              ));
+                        },
+                        child: Card(
+                          //color: Theme.of(context).colorScheme.primaryContainer,
+                          child: ListTile(
+                              leading: Text(
+                                state.photosListResponse![index].id.toString(),
+                                // _photosList[index]['id'],
+                                style: Theme.of(context).textTheme.titleLarge,
+                              ),
+                              title: Text(
+                                  state.photosListResponse![index].title ?? '')
+                              //Text(_photosList[index]['title']),
+                              ),
+                        ),
+                      );
+                    },
+                    separatorBuilder: (context, index) {
+                      return const SizedBox(
+                        height: 10,
+                      );
+                    },
+                    itemCount: state.photosListResponse?.length ?? 0,
+                  ),
                 ],
               ),
             );
@@ -110,6 +109,3 @@ class _PhotosListScreenState extends State<PhotosListScreen> {
         );
   }
 }
-
-// margin: EdgeInsets.symmetric(horizontal: Theme.of(context).cardTheme.margin!.horizontal,),
-// color: Theme.of(context).colorScheme.error.withOpacity(0.75),

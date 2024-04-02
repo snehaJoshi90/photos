@@ -62,6 +62,7 @@ class _PhotosListScreenState extends State<PhotosListScreen> {
                   ),
                   ListView.separated(
                     shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
                     itemBuilder: (context, index) {
                       return InkWell(
                         onTap: () {
@@ -75,16 +76,22 @@ class _PhotosListScreenState extends State<PhotosListScreen> {
                         },
                         child: Card(
                           //color: Theme.of(context).colorScheme.primaryContainer,
-                          child: ListTile(
-                              leading: Text(
-                                state.photosListResponse![index].id.toString(),
-                                // _photosList[index]['id'],
-                                style: Theme.of(context).textTheme.titleLarge,
-                              ),
-                              title: Text(
-                                  state.photosListResponse![index].title ?? '')
-                              //Text(_photosList[index]['title']),
-                              ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: ListTile(
+
+                                leading: Text(
+                                  state.photosListResponse![index].id.toString(),
+                                  // _photosList[index]['id'],
+                                  style: Theme.of(context).textTheme.titleLarge,
+                                ),
+                                trailing: Image.network(state.photosListResponse![index].url.toString()),
+                                title: Text(
+                                    state.photosListResponse![index].title ?? '')
+                                //Text(_photosList[index]['title']),
+
+                                ),
+                          ),
                         ),
                       );
                     },

@@ -26,7 +26,7 @@ class _UpdatePhotosScreenState extends State<UpdatePhotosScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text('Update title'),
+          title: const Text('Add title'),
         ),
         body: Form(
           key: _formKey,
@@ -125,7 +125,8 @@ class _UpdatePhotosScreenState extends State<UpdatePhotosScreen> {
                     }
                   },
                   child: Text('save')),
-              bottom: 50,
+              bottom: 200,
+              left: 300,
             )
           ]),
         ));

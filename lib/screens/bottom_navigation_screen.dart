@@ -18,7 +18,7 @@ class BottomNavigationScreen extends StatefulWidget {
 
 class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
   int _selectedIndex = 0;
-  Color _iconColor = kColorScheme.onPrimary;
+
   static final List<Widget> _widgetOptions = <Widget>[
     BlocProvider(
       create: (context) => PhotosListCubit(),
@@ -34,7 +34,6 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
-      _iconColor = Colors.red;
     });
   }
 
@@ -68,7 +67,8 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
             IconButton(
               icon: Icon(
                 Icons.menu,
-                color: _iconColor
+                color:
+                    _selectedIndex == 0 ? kColorScheme.onPrimary : Colors.black,
                 //kColorScheme.onPrimary,
               ),
               onPressed: () {
@@ -78,12 +78,12 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
             IconButton(
               icon: Icon(
                 Icons.task_alt_sharp,
-                color:_iconColor
+                color:
+                    _selectedIndex == 2 ? kColorScheme.onPrimary : Colors.black,
                 //Theme.of(context).colorScheme.onPrimary,
               ),
               onPressed: () {
                 _onItemTapped(2);
-
               },
             ),
           ],

@@ -9,15 +9,19 @@ class PhotosDetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).colorScheme.tertiaryContainer,
       appBar: AppBar(
         title: const Text('Photos'),
+
       ),
       body: Padding(
         padding: const EdgeInsets.only(left: 20, right: 20),
         child: Center(
           child: Container(
-            height: MediaQuery.of(context).size.height * 0.5,
+
+            height: MediaQuery.of(context).size.height * 0.4,
             decoration: BoxDecoration(
+                color: Colors.white,
                 borderRadius: BorderRadius.circular(15),
                 border: Border.all(color: Colors.black)),
             child: Padding(

@@ -124,7 +124,7 @@ class _UpdatePhotosScreenState extends State<UpdatePhotosScreen> {
                       );
                     }
                   },
-                  child: Text('save')),
+                  child: Text('save',style: Theme.of(context).textTheme.titleLarge,)),
               bottom: 200,
               left: 300,
             )

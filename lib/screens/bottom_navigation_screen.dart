@@ -4,6 +4,7 @@ import 'package:photos/main.dart';
 
 import 'package:photos/screens/photos_list/bloc/photos_list_cubit.dart';
 import 'package:photos/screens/update_photos/bloc/update_photos_cubit.dart';
+import 'package:photos/screens/todos_list/bloc/todos_cubit.dart';
 
 import 'package:photos/screens/photos_list/photos_list_screen.dart';
 import 'package:photos/screens/update_photos/update_photos_screen.dart';
@@ -28,7 +29,10 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
       create: (context) => UpdatePhotosCubit(),
       child: const UpdatePhotosScreen(),
     ),
-    const TodosScreen(),
+    BlocProvider(
+      create: (context) => TodosCubit(),
+      child: const TodosScreen(),
+    ),
   ];
 
   void _onItemTapped(int index) {

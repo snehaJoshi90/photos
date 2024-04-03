@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
                 foregroundColor: kColorScheme.onPrimary,
                 centerTitle: true),
             cardTheme: const CardTheme().copyWith(
-                color: kColorScheme.primaryContainer,
+                color: kColorScheme.tertiaryContainer,
                 margin:
                     const EdgeInsets.symmetric(horizontal: 16, vertical: 8)),
             textTheme: GoogleFonts.montserratTextTheme().copyWith(
@@ -36,7 +36,11 @@ class MyApp extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                     color: kColorScheme.onPrimaryContainer,
                     fontSize: 18))),
-        home: const BottomNavigationScreen()
-    );
+        home:
+            // BlocProvider(
+            //   create: (context) => PhotosListCubit(),
+            //   child: const PhotosListScreen(),
+            // ),
+            const BottomNavigationScreen());
   }
 }

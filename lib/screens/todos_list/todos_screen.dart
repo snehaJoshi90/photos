@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:photos/screens/add_task/bloc/add_task_cubit.dart';
 
 import 'package:photos/screens/todos_list/bloc/todos_state.dart';
 import 'package:photos/screens/todos_list/bloc/todos_cubit.dart';
+
+import 'package:photos/screens/add_task/add_task_screen.dart';
 
 class TodosScreen extends StatefulWidget {
   const TodosScreen({super.key});
@@ -55,7 +58,15 @@ class _TodosScreenState extends State<TodosScreen> {
           title: const Text('Todos '),
           actions: [
             TextButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => BlocProvider(
+                              create: (context) => AddTaskCubit(),
+                              child: AddTaskScreen(),
+                            )));
+              },
               child: const Text(
                 'Add task',
                 style: TextStyle(color: Colors.white),

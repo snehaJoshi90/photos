@@ -8,7 +8,7 @@ class AddTaskResponse{
   String? userId;
   int? id;
   String? title;
-  bool? complete;
+  bool? completed;
 
   AddTaskResponse();
 

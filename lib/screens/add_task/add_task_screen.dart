@@ -14,7 +14,8 @@ class AddTaskScreen extends StatefulWidget {
 
 class _AddTaskScreenState extends State<AddTaskScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  int selectedOption = 1;
+ // int selectedOption = 1;
+  bool completed = false;
 
   AddTaskCubit? addTaskCubit;
 
@@ -23,7 +24,7 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
     super.initState();
 
     addTaskCubit = BlocProvider.of<AddTaskCubit>(context);
-    addTaskCubit?.addTaskDetails();
+    addTaskCubit?.addTaskDetails(completed);
   }
 
   @override
@@ -80,22 +81,26 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                       ListTile(
                         title: const Text('Complete'),
                         leading: Radio(
-                            value: 0,
-                            groupValue: selectedOption,
+                            value: true,
+                            groupValue: completed,
+                            //selectedOption,
                             onChanged: (value) {
                               setState(() {
-                                selectedOption = value ?? 0;
+                               // selectedOption = value ?? 0;
+                                completed = value ?? false;
                               });
                             }),
                       ),
                       ListTile(
                         title: const Text('incomplete'),
                         leading: Radio(
-                            value: 1,
-                            groupValue: selectedOption,
+                            value: false,
+                            groupValue: completed,
+                            //selectedOption,
                             onChanged: (value) {
                               setState(() {
-                                selectedOption = value ?? 0;
+                               // selectedOption = value ?? 0;
+                                completed = value ?? false;
                               });
                             }),
                       )
@@ -117,7 +122,7 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                   child: ElevatedButton(
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
-                          addTaskCubit?.addTaskDetails();
+                          addTaskCubit?.addTaskDetails(completed);
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
                               content: Text('Successfully saved. '),

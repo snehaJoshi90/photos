@@ -12,14 +12,16 @@ class AddTaskCubit extends Cubit<AddTaskState> {
   final Dio dio = Dio();
   TextEditingController titleController = TextEditingController();
 
-  Future<void> addTaskDetails() async {
+  Future<void> addTaskDetails(bool completed) async {
     emit(AddTaskState(addTaskResponseStatus: AddTaskResponseStatus.loading));
 
     String title = titleController.text;
 
     final response = await dio.post(
         'https://jsonplaceholder.typicode.com/users/1/todos',
-        data: {'title': title});
+        data: {'title': title,'completed': completed});
+
+    print('Request body ${response.requestOptions.data}');
 
     if (response.statusCode == 201) {
       final addTask = AddTaskResponse.fromJson(response.data);
@@ -27,6 +29,11 @@ class AddTaskCubit extends Cubit<AddTaskState> {
       emit(state.copyWith(
           addTaskResponseStatus: AddTaskResponseStatus.addTaskSuccess,
           addTaskResponse: addTask));
+      print('User Id: ${addTask.id}');
+      print('Task Id: ${addTask.id}');
+      print('Title: ${addTask.title}');
+      print('Completed: ${addTask.completed}');
+
     } else {
       emit(state.copyWith(
           addTaskResponseStatus: AddTaskResponseStatus.failure,

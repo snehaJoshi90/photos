@@ -25,9 +25,9 @@ class _UpdatePhotosScreenState extends State<UpdatePhotosScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: const Text('Add title'),
-        ),
+        // appBar: AppBar(
+        //   title: const Text('Add title'),
+        // ),
         body: Form(
           key: _formKey,
           child: Stack(alignment: Alignment.topCenter, children: [

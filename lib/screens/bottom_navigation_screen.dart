@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:photos/main.dart';
@@ -5,10 +6,12 @@ import 'package:photos/main.dart';
 import 'package:photos/screens/photos_list/bloc/photos_list_cubit.dart';
 import 'package:photos/screens/update_photos/bloc/update_photos_cubit.dart';
 import 'package:photos/screens/todos_list/bloc/todos_cubit.dart';
+import 'package:photos/screens/add_task/bloc/add_task_cubit.dart';
 
 import 'package:photos/screens/photos_list/photos_list_screen.dart';
 import 'package:photos/screens/update_photos/update_photos_screen.dart';
 import 'package:photos/screens/todos_list/todos_screen.dart';
+import 'package:photos/screens/add_task/add_task_screen.dart';
 
 class BottomNavigationScreen extends StatefulWidget {
   const BottomNavigationScreen({super.key});
@@ -41,9 +44,75 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
     });
   }
 
+  Widget drawerWidget() {
+    return Drawer(
+      child: ListView(
+        padding: EdgeInsets.zero,
+        children: <Widget>[
+          DrawerHeader(
+            decoration: BoxDecoration(
+              color: kColorScheme.primary,
+            ),
+            child: Text(
+              'Drawer Header',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 24,
+              ),
+            ),
+          ),
+          ListTile(
+            leading: Icon(Icons.home),
+            title: Text('Home'),
+            onTap: () {
+              // Navigate to home screen
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.account_circle),
+            title: Text('User Profile'),
+            onTap: () {
+              // Navigate to user profile screen
+            },
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget activeScreenTitle() {
+    return Text(_selectedIndex == 0
+        ? 'Photos List'
+        : _selectedIndex == 1
+            ? 'Add title'
+            : 'Todos');
+  }
+
+  Widget activeScreenAction() {
+    return TextButton(
+        onPressed: () {
+          if (_selectedIndex == 2) {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => BlocProvider(
+                          create: (context) => AddTaskCubit(),
+                          child: AddTaskScreen(),
+                        )));
+          }
+        },
+        child: Text(_selectedIndex == 2 ? 'Add task' : ' ',
+            style: TextStyle(color: Colors.white)));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: activeScreenTitle(),
+        actions: [activeScreenAction()],
+      ),
+      drawer: drawerWidget(),
       extendBody: true,
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
@@ -70,7 +139,7 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
           children: <Widget>[
             IconButton(
               icon: Icon(
-                Icons.menu,
+                Icons.list,
                 color:
                     _selectedIndex == 0 ? kColorScheme.onPrimary : Colors.black,
                 //kColorScheme.onPrimary,

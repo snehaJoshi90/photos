@@ -54,26 +54,26 @@ class _TodosScreenState extends State<TodosScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: const Text('Todos '),
-          actions: [
-            TextButton(
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => BlocProvider(
-                              create: (context) => AddTaskCubit(),
-                              child: AddTaskScreen(),
-                            )));
-              },
-              child: const Text(
-                'Add task',
-                style: TextStyle(color: Colors.white),
-              ),
-            )
-          ],
-        ),
+        // appBar: AppBar(
+        //   title: const Text('Todos '),
+        //   actions: [
+        //     TextButton(
+        //       onPressed: () {
+        //         Navigator.push(
+        //             context,
+        //             MaterialPageRoute(
+        //                 builder: (context) => BlocProvider(
+        //                       create: (context) => AddTaskCubit(),
+        //                       child: AddTaskScreen(),
+        //                     )));
+        //       },
+        //       child: const Text(
+        //         'Add task',
+        //         style: TextStyle(color: Colors.white),
+        //       ),
+        //     )
+        //   ],
+        // ),
         body: BlocBuilder<TodosCubit, TodosState>(builder: (context, state) {
           if (state.todosResponseStatus == TodosResponseStatus.loading) {
             return const Center(child: Text('loading state')

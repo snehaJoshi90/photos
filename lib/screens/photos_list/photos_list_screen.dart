@@ -43,9 +43,9 @@ class _PhotosListScreenState extends State<PhotosListScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: const Text('Photos list'),
-        ),
+        // appBar: AppBar(
+        //   title: const Text('Photos list'),
+        // ),
         body: BlocBuilder<PhotosListCubit, PhotoListState>(
             builder: (context, state) {
           if (state.photosListResponseStatus ==

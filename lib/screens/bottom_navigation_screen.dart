@@ -7,11 +7,13 @@ import 'package:photos/screens/photos_list/bloc/photos_list_cubit.dart';
 import 'package:photos/screens/update_photos/bloc/update_photos_cubit.dart';
 import 'package:photos/screens/todos_list/bloc/todos_cubit.dart';
 import 'package:photos/screens/add_task/bloc/add_task_cubit.dart';
+import 'package:photos/screens/users/bloc/users_cubit.dart';
 
 import 'package:photos/screens/photos_list/photos_list_screen.dart';
 import 'package:photos/screens/update_photos/update_photos_screen.dart';
 import 'package:photos/screens/todos_list/todos_screen.dart';
 import 'package:photos/screens/add_task/add_task_screen.dart';
+import 'package:photos/screens/users/users_screen.dart';
 
 class BottomNavigationScreen extends StatefulWidget {
   const BottomNavigationScreen({super.key});
@@ -70,9 +72,19 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
           ),
           ListTile(
             leading: Icon(Icons.account_circle),
-            title: Text('User Profile'),
+            title: Text('Users'),
             onTap: () {
-              // Navigate to user profile screen
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => BlocProvider(
+                    create: (context) => UsersCubit(),
+                    child: UsersScreen(),
+                  ),
+                ),
+              );
+              // Navigator.push(context,
+              //     MaterialPageRoute(builder: (context) => const UsersScreen()));
             },
           ),
         ],

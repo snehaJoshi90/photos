@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:photos/main.dart';
-
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:photos/screens/users/bloc/users_state.dart';
 import 'package:photos/screens/users/bloc/users_cubit.dart';
+
+import 'user_details_screen.dart';
 
 class UsersScreen extends StatefulWidget {
   const UsersScreen({super.key});
@@ -77,14 +78,27 @@ class _UsersScreenState extends State<UsersScreen> {
                 shrinkWrap: true,
                 itemBuilder: (context, index) {
                   return ListTile(
-                    leading: Text(
-                        '${state.usersResponse![index].id.toString()}'),
+                    leading:
+                        Text('${state.usersResponse![index].id.toString()}'),
                     //Text(_users[index]['id'].toString()),
                     title: Text('${state.usersResponse![index].name}'),
                     // Text(_users[index]['name']),
                     subtitle: Text('${state.usersResponse![index].email}'),
                     //Text(_users[index]['email']),
-                    trailing: const Icon(Icons.arrow_forward_ios),
+                    trailing: IconButton(
+                      icon: const Icon(
+                        Icons.arrow_forward_ios,
+                      ),
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => UserDetailsScreen(
+                                usersResponse: state.usersResponse![index],
+                              ),
+                            ));
+                      },
+                    ),
                   );
                 },
                 separatorBuilder: (context, index) {

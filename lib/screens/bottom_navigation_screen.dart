@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:photos/main.dart';
+import 'package:photos/screens/create_profile/bloc/create_profile_state.dart';
 
 import 'package:photos/screens/photos_list/bloc/photos_list_cubit.dart';
 import 'package:photos/screens/update_photos/bloc/update_photos_cubit.dart';
@@ -14,6 +15,7 @@ import 'package:photos/screens/update_photos/update_photos_screen.dart';
 import 'package:photos/screens/todos_list/todos_screen.dart';
 import 'package:photos/screens/add_task/add_task_screen.dart';
 import 'package:photos/screens/users/users_screen.dart';
+import 'package:photos/screens/create_profile/create_profile_screen.dart';
 
 class BottomNavigationScreen extends StatefulWidget {
   const BottomNavigationScreen({super.key});
@@ -64,14 +66,14 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
             ),
           ),
           ListTile(
-            leading: Icon(Icons.home),
-            title: Text('Home'),
+            leading: Icon(Icons.account_circle),
+            title: const Text('Create Profile'),
             onTap: () {
-              // Navigate to home screen
+             Navigator.push(context, MaterialPageRoute(builder: (context)=>CreateProfileScreen()));
             },
           ),
           ListTile(
-            leading: Icon(Icons.account_circle),
+            leading: Icon(Icons.format_list_numbered_sharp),
             title: Text('Users'),
             onTap: () {
               Navigator.push(

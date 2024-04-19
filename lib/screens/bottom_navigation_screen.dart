@@ -9,6 +9,7 @@ import 'package:photos/screens/update_photos/bloc/update_photos_cubit.dart';
 import 'package:photos/screens/todos_list/bloc/todos_cubit.dart';
 import 'package:photos/screens/add_task/bloc/add_task_cubit.dart';
 import 'package:photos/screens/users/bloc/users_cubit.dart';
+import 'package:photos/screens/create_profile/bloc/create_profile_cubit.dart';
 
 import 'package:photos/screens/photos_list/photos_list_screen.dart';
 import 'package:photos/screens/update_photos/update_photos_screen.dart';
@@ -69,7 +70,13 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
             leading: Icon(Icons.account_circle),
             title: const Text('Create Profile'),
             onTap: () {
-             Navigator.push(context, MaterialPageRoute(builder: (context)=>CreateProfileScreen()));
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => BlocProvider(
+                            create: (context) => CreateProfileCubit(),
+                            child: CreateProfileScreen(),
+                          )));
             },
           ),
           ListTile(

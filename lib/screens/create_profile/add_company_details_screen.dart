@@ -1,7 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:photos/main.dart';
-import 'package:flutter/services.dart';
 
 class AddCompanyDetailsScreen extends StatefulWidget {
   const AddCompanyDetailsScreen({super.key});
@@ -19,7 +17,7 @@ class _AddCompanyDetailsScreenState extends State<AddCompanyDetailsScreen> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        title: Text('Company Details'),
+        title: const Text('Company Details'),
       ),
       body: Form(
         key: formKey,
@@ -30,12 +28,12 @@ class _AddCompanyDetailsScreenState extends State<AddCompanyDetailsScreen> {
               padding: const EdgeInsets.all(15.0),
               child: Column(
                 children: [
-                  SizedBox(
+                 const SizedBox(
                     height: 50,
                   ),
                   TextFormField(
                     // controller: _updatePhotosCubit?.titleController,
-                    decoration: InputDecoration(
+                    decoration:const InputDecoration(
                       hintText: 'Enter company name',
                     ),
 
@@ -46,12 +44,12 @@ class _AddCompanyDetailsScreenState extends State<AddCompanyDetailsScreen> {
                       return null;
                     },
                   ),
-                  SizedBox(
+                const  SizedBox(
                     height: 20,
                   ),
                   TextFormField(
                     // controller: _updatePhotosCubit?.titleController,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       hintText: 'catchPhrase',
                     ),
                     maxLength: 50,
@@ -65,7 +63,7 @@ class _AddCompanyDetailsScreenState extends State<AddCompanyDetailsScreen> {
                   ),
                   TextFormField(
                     // controller: _updatePhotosCubit?.titleController,
-                    decoration: InputDecoration(
+                    decoration:const InputDecoration(
                       hintText: 'bs',
                     ),
 
@@ -80,6 +78,7 @@ class _AddCompanyDetailsScreenState extends State<AddCompanyDetailsScreen> {
               ),
             ),
             Positioned(
+              bottom: 50,
               child: SizedBox(
                 height: MediaQuery.of(context).size.width * 0.15,
                 width: MediaQuery.of(context).size.width * 0.85,
@@ -88,7 +87,7 @@ class _AddCompanyDetailsScreenState extends State<AddCompanyDetailsScreen> {
                       if (formKey.currentState!.validate()) {
                         //  _postMethodCubit?.fetchPost();
                         ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
+                        const  SnackBar(
                             content: Text('Successfully saved. '),
                           ),
                         );
@@ -101,7 +100,7 @@ class _AddCompanyDetailsScreenState extends State<AddCompanyDetailsScreen> {
                       style: Theme.of(context).textTheme.titleLarge,
                     )),
               ),
-              bottom: 50,
+
             )
           ],
         ),

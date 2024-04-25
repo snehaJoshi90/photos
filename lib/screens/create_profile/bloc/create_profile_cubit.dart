@@ -20,10 +20,7 @@ class CreateProfileCubit extends Cubit<CreateProfileState> {
   TextEditingController cityController = TextEditingController();
   TextEditingController zipcodeController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
-  TextEditingController websiteController = TextEditingController();
-  TextEditingController companyController = TextEditingController();
-  TextEditingController catchPhrasController = TextEditingController();
-  TextEditingController bsController = TextEditingController();
+
 
   Future<void> createProfile() async {
     emit(CreateProfileState(
@@ -37,10 +34,7 @@ class CreateProfileCubit extends Cubit<CreateProfileState> {
     String city = cityController.text;
     String zipcode = zipcodeController.text;
     String phone = phoneController.text;
-    String website = websiteController.text;
-    String company = companyController.text;
-    String catchPhras = catchPhrasController.text;
-    String bs = bsController.text;
+
 
     final response =
         await _dio.post('https://jsonplaceholder.typicode.com/users', data: {
@@ -52,9 +46,7 @@ class CreateProfileCubit extends Cubit<CreateProfileState> {
       'city': city,
       'zipcode': zipcode,
       'phone': phone,
-      'website': website,
-      'catchPhrase': catchPhras,
-      'bs': bs
+
     });
     print('data: ${response.data}');
     if (response.statusCode == 201) {

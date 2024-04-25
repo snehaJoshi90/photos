@@ -4,9 +4,10 @@ import 'package:photos/main.dart';
 import 'package:flutter/services.dart';
 import 'package:photos/screens/users/model/users_response.dart';
 
-import 'add_company_details_screen.dart';
+import '../company_details/add_company_details_screen.dart';
 import 'package:photos/screens/create_profile/bloc/create_profile_cubit.dart';
 import 'package:photos/screens/create_profile/bloc/create_profile_state.dart';
+import 'package:photos/screens/company_details/bloc/add_company_details_cubit.dart';
 
 class CreateProfileScreen extends StatefulWidget {
   const CreateProfileScreen({super.key});
@@ -193,8 +194,16 @@ class _CreateProfileScreenState extends State<CreateProfileScreen> {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) =>
-                                        const AddCompanyDetailsScreen()));
+                                    builder: (context) => BlocProvider(
+                                          create: (context) =>
+                                              AddCompanyDetailsCubit(),
+                                          child: const AddCompanyDetailsScreen(),
+                                        )));
+                            // Navigator.push(
+                            //     context,
+                            //     MaterialPageRoute(
+                            //         builder: (context) =>
+                            //             const AddCompanyDetailsScreen()));
                           }
                         },
                         //  style: ButtonStyle(backgroundColor: MaterialStatePropertyAll(Colors.cyan)),

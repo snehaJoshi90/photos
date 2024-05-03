@@ -36,7 +36,7 @@ class _AddCompanyDetailsScreenState extends State<AddCompanyDetailsScreen> {
             builder: (context, state) {
           if (state.addCompanyDetailsStatues ==
               AddCompanyDetailsStatues.loading) {
-            return Center(
+            return const Center(
               child: CircularProgressIndicator(),
             );
           } else if (state.addCompanyDetailsStatues ==
@@ -126,7 +126,7 @@ class _AddCompanyDetailsScreenState extends State<AddCompanyDetailsScreen> {
               ),
             );
           } else {
-            return Center(
+            return const Center(
               child: Text('Error'),
             );
           }

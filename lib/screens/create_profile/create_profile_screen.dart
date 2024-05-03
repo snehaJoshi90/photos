@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:photos/main.dart';
 import 'package:flutter/services.dart';
-import 'package:photos/screens/users/model/users_response.dart';
+
 
 import '../company_details/add_company_details_screen.dart';
 import 'package:photos/screens/create_profile/bloc/create_profile_cubit.dart';
@@ -39,7 +39,7 @@ class _CreateProfileScreenState extends State<CreateProfileScreen> {
           builder: (context, state) {
         if (state.createProfileResponseStatues ==
             CreateProfileResponseStatues.loading) {
-          return Center(
+          return const Center(
             child: CircularProgressIndicator(),
           );
         } else if (state.createProfileResponseStatues ==
@@ -219,7 +219,7 @@ class _CreateProfileScreenState extends State<CreateProfileScreen> {
             ),
           );
         } else {
-          return Center(
+          return const Center(
             child: Text('Error'),
           );
         }

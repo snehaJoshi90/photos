@@ -1,8 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:photos/main.dart';
-import 'package:photos/screens/create_profile/bloc/create_profile_state.dart';
 
 import 'package:photos/screens/photos_list/bloc/photos_list_cubit.dart';
 import 'package:photos/screens/update_photos/bloc/update_photos_cubit.dart';
@@ -58,7 +56,7 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
             decoration: BoxDecoration(
               color: kColorScheme.primary,
             ),
-            child: Text(
+            child: const Text(
               'Drawer Header',
               style: TextStyle(
                 color: Colors.white,
@@ -67,7 +65,7 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
             ),
           ),
           ListTile(
-            leading: Icon(Icons.account_circle),
+            leading: const Icon(Icons.account_circle),
             title: const Text('Create Profile'),
             onTap: () {
               Navigator.push(
@@ -75,20 +73,20 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
                   MaterialPageRoute(
                       builder: (context) => BlocProvider(
                             create: (context) => CreateProfileCubit(),
-                            child: CreateProfileScreen(),
+                            child: const CreateProfileScreen(),
                           )));
             },
           ),
           ListTile(
-            leading: Icon(Icons.format_list_numbered_sharp),
-            title: Text('Users'),
+            leading: const Icon(Icons.format_list_numbered_sharp),
+            title: const Text('Users'),
             onTap: () {
               Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder: (context) => BlocProvider(
                     create: (context) => UsersCubit(),
-                    child: UsersScreen(),
+                    child: const UsersScreen(),
                   ),
                 ),
               );
@@ -118,12 +116,12 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
                 MaterialPageRoute(
                     builder: (context) => BlocProvider(
                           create: (context) => AddTaskCubit(),
-                          child: AddTaskScreen(),
+                          child: const AddTaskScreen(),
                         )));
           }
         },
         child: Text(_selectedIndex == 2 ? 'Add task' : ' ',
-            style: TextStyle(color: Colors.white)));
+            style: const TextStyle(color: Colors.white)));
   }
 
   @override

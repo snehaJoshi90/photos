@@ -34,7 +34,7 @@ class AddCompanyDetailsCubit extends Cubit<AddCompanyDetailsState> {
       'name': company
     });
 
-    print('data: ${response.data}');
+   // print('data: ${response.data}');
     if (response.statusCode == 201) {
       final addCompanyData = UsersResponse.fromJson(response.data);
       emit(state.copyWith(

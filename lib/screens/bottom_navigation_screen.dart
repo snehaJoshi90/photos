@@ -58,11 +58,13 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
             decoration: BoxDecoration(
               color: kColorScheme.primary,
             ),
-            child: Text(
-              'Drawer Header',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 24,
+            child: Center(
+              child: Text(
+                'Options',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 24,
+                ),
               ),
             ),
           ),
@@ -129,6 +131,7 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         title: activeScreenTitle(),
         actions: [activeScreenAction()],
@@ -148,6 +151,7 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
         child: const Icon(Icons.add),
       ),
       bottomNavigationBar: BottomAppBar(
+
         color: kColorScheme.primary,
         height: 70,
         shape: const CircularNotchedRectangle(),

@@ -5,6 +5,12 @@ import 'package:photos/main.dart';
 import 'package:photos/screens/company_details/bloc/add_company_details_cubit.dart';
 import 'package:photos/screens/company_details/bloc/add_company_details_state.dart';
 
+import 'package:photos/screens/bottom_navigation_screen.dart';
+
+
+
+
+
 class AddCompanyDetailsScreen extends StatefulWidget {
   const AddCompanyDetailsScreen({super.key});
 
@@ -111,7 +117,13 @@ class _AddCompanyDetailsScreenState extends State<AddCompanyDetailsScreen> {
                                 const SnackBar(
                                   content: Text('Successfully saved. '),
                                 ),
+
                               );
+                              Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                               const BottomNavigationScreen()));
                             }
                           },
                           style: ElevatedButton.styleFrom(
